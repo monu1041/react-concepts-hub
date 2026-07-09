@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  base: 'https://monu1041.github.io/react-concepts-hub/',
+  base: '/react-concepts-hub/',
 })
