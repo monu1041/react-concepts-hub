@@ -39,7 +39,7 @@ export default function Dashboard({ topic }) {
         {activeTab === 'ui' ? (
           <ActiveComponent />
         ) : (
-          <CodeViewer code={topic.codeString} />
+          <CodeViewer files={topic.files} />
         )}
       </div>
     </main>
