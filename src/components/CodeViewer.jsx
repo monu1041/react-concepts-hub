@@ -1,9 +1,9 @@
+// src/components/CodeViewer.jsx
 import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function CodeViewer({ files }) {
-  // Default to the first file in the array
   const [activeFileIndex, setActiveFileIndex] = useState(0);
 
   if (!files || files.length === 0) {
@@ -14,8 +14,20 @@ export default function CodeViewer({ files }) {
 
   return (
     <div>
-      {/* File Sub-Tabs */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', background: '#0f172a', padding: '8px', borderRadius: '6px' }}>
+      {/* File Sub-Tabs Container with Horizontal Scroll */}
+      <div 
+        style={{ 
+          display: 'flex', 
+          gap: '8px', 
+          marginBottom: '12px', 
+          background: '#0f172a', 
+          padding: '8px', 
+          borderRadius: '6px',
+          overflowX: 'auto',         // Allows horizontal scrolling
+          whiteSpace: 'nowrap',      // Prevents buttons from wrapping to the next line
+          WebkitOverflowScrolling: 'touch' // Makes scrolling smooth on trackpads/mobile
+        }}
+      >
         {files.map((file, index) => (
           <button
             key={file.name}
@@ -28,7 +40,8 @@ export default function CodeViewer({ files }) {
               cursor: 'pointer',
               background: activeFileIndex === index ? '#3b82f6' : 'transparent',
               color: '#fff',
-              fontWeight: activeFileIndex === index ? 'bold' : 'normal'
+              fontWeight: activeFileIndex === index ? 'bold' : 'normal',
+              flexShrink: 0          // Crucial: Prevents buttons from squeezing/shrinking
             }}
           >
             📄 {file.name}
