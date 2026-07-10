@@ -11,7 +11,7 @@ export default function App() {
   const currentTopic = topics.find(t => t.id === activeTopicId);
 
   return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden', fontFamily: 'sans-serif', position: 'relative' }}>
+    <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden', fontFamily: 'sans-serif', position: 'relative' }}>
       
       {/* Mobile Top Bar */}
       <div style={{
