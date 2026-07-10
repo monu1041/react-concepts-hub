@@ -8,60 +8,79 @@ export default function Sidebar({ activeTopicId, setActiveTopicId, isOpen }) {
       className={`app-sidebar ${isOpen ? 'open' : ''}`}
       style={{ 
         width: '280px', 
-        background: '#1e1e24', 
-        color: '#fff', 
-        height: '100vh', 
+        background: 'var(--bg-sidebar)', 
+        color: 'var(--text-sidebar)', 
+        height: '100%', 
         padding: '20px', 
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
-        zIndex: 50
+        zIndex: 50,
+        transition: 'background-color 0.2s, color 0.2s'
       }}
     >
-      <h2 style={{ fontSize: '20px', marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '10px', flexShrink: 0 }}>
+      {/* Sidebar Header Title Anchor */}
+      <h2 style={{ 
+        fontSize: '20px', 
+        marginBottom: '20px', 
+        borderBottom: '1px solid var(--border-color)', 
+        paddingBottom: '10px', 
+        flexShrink: 0, 
+        color: 'var(--text-sidebar)',
+        transition: 'border-color 0.2s, color 0.2s'
+      }}>
         📚 Dev Journal
       </h2>
       
-      <ul 
-        style={{ 
-          listStyle: 'none', 
-          padding: 0, 
-          margin: 0,
-          overflowY: 'auto',
-          flex: 1,
-          paddingRight: '4px'
-        }}
-      >
-        {topics.map((topic) => (
-          <li 
-            key={topic.id} 
-            onClick={() => setActiveTopicId(topic.id)}
-            style={{
-              padding: '10px 15px',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              marginBottom: '8px',
-              background: activeTopicId === topic.id ? '#3b82f6' : 'transparent',
-              transition: 'background 0.2s'
-            }}
-          >
-            <div style={{ fontWeight: '500' }}>{topic.title}</div>
-            <small style={{ opacity: 0.6, fontSize: '11px' }}>{topic.category}</small>
-          </li>
-        ))}
+      {/* Scrollable Array Container List */}
+      <ul style={{ 
+        listStyle: 'none', 
+        padding: 0, 
+        margin: 0, 
+        overflowY: 'auto', 
+        flex: 1, 
+        paddingRight: '4px' 
+      }}>
+        {topics.map((topic) => {
+          const isActive = activeTopicId === topic.id;
+          return (
+            <li 
+              key={topic.id} 
+              onClick={() => setActiveTopicId(topic.id)}
+              style={{
+                padding: '10px 15px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                marginBottom: '8px',
+                background: isActive ? '#3b82f6' : 'transparent',
+                // Keeps active selection legible against bright highlight blocks
+                color: isActive ? '#ffffff' : 'var(--text-sidebar)', 
+                transition: 'background-color 0.2s, color 0.2s'
+              }}
+            >
+              <div style={{ fontWeight: '500' }}>{topic.title}</div>
+              <small style={{ 
+                opacity: 0.6, 
+                fontSize: '11px',
+                color: isActive ? '#ffffff' : 'var(--text-secondary)'
+              }}>
+                {topic.category}
+              </small>
+            </li>
+          );
+        })}
       </ul>
 
-      {/* Responsive styles handling slide animation */}
+      {/* Sliding Mobile Breakpoint Drawer Logic Override */}
       <style>{`
         @media (max-width: 768px) {
           .app-sidebar {
             position: fixed !important;
-            top: 50px; /* Sits right beneath the mobile header bar */
+            top: 56px;
             left: 0;
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
-            width: 100% !important; /* Full width drawer on mobile */
-            height: calc(100vh - 50px) !important;
+            width: 100% !important;
           }
           .app-sidebar.open {
             transform: translateX(0);

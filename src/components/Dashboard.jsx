@@ -1,4 +1,3 @@
-// src/components/Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import CodeViewer from './CodeViewer';
 
@@ -10,57 +9,75 @@ export default function Dashboard({ topic }) {
 
   useEffect(() => {
     if (!topic) return;
-
     async function loadTopicData() {
       setIsLoading(true);
       try {
-        // Fetch component and raw code simultaneously
-        const [compModule, fetchedFiles] = await Promise.all([
-          topic.loadComponent(),
-          topic.loadFiles()
-        ]);
-        
+        const [compModule, fetchedFiles] = await Promise.all([topic.loadComponent(), topic.loadFiles()]);
         setComponent(() => compModule.default);
         setFiles(fetchedFiles);
-      } catch (err) {
-        console.error("Failed to load topic module", err);
-      } finally {
-        setIsLoading(false);
-      }
+      } catch (err) { console.error(err); }
+      finally { setIsLoading(false); }
     }
-
     loadTopicData();
-  }, [topic]); // Triggers every time the user changes topics in the sidebar
+  }, [topic]);
 
-  if (!topic) {
-    return <div style={{ padding: '40px', flex: 1 }}>Select a topic to begin!</div>;
-  }
-
-  if (isLoading) {
-    return <div style={{ padding: '40px', flex: 1, color: '#64748b' }}>⚡ Loading project assets...</div>;
-  }
+  if (!topic) return <div style={{ padding: '40px', flex: 1, color: 'var(--text-secondary)' }}>Select a topic to begin!</div>;
+  if (isLoading) return <div style={{ padding: '40px', flex: 1, color: 'var(--text-secondary)' }}>⚡ Loading assets...</div>;
 
   return (
-    <main style={{ flex: 1, padding: '40px', backgroundColor: '#f8fafc', height: '100vh', overflowY: 'auto', boxSizing: 'border-box' }}>
+    <main style={{ flex: 1, padding: '40px', backgroundColor: 'var(--bg-main)', height: '100%', overflowY: 'auto', boxSizing: 'border-box', transition: 'all 0.2s' }}>
       <div style={{ marginBottom: '24px' }}>
-        <h1 style={{ margin: '0 0 8px 0', color: '#0f172a' }}>{topic.title}</h1>
-        <p style={{ margin: 0, color: '#64748b' }}>{topic.description}</p>
+        <h1 style={{ margin: '0 0 8px 0', color: 'var(--text-primary)' }}>{topic.title}</h1>
+        <p style={{ margin: 0, color: 'var(--text-secondary)' }}>{topic.description}</p>
       </div>
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', borderBottom: '2px solid #e2e8f0', paddingBottom: '10px' }}>
-        <button onClick={() => setActiveTab('ui')} style={{ padding: '8px 16px', background: activeTab === 'ui' ? '#0f172a' : 'transparent', color: activeTab === 'ui' ? '#fff' : '#64748b', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>👁️ Live UI</button>
-        <button onClick={() => setActiveTab('code')} style={{ padding: '8px 16px', background: activeTab === 'code' ? '#0f172a' : 'transparent', color: activeTab === 'code' ? '#fff' : '#64748b', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>💻 Source Code</button>
+      {/* Navigation Tabs */}
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', borderBottom: `2px solid var(--border-color)`, paddingBottom: '10px' }}>
+        <button onClick={() => setActiveTab('ui')} className={`tab-btn ${activeTab === 'ui' ? 'active' : ''}`}>👁️ Live UI</button>
+        <button onClick={() => setActiveTab('code')} className={`tab-btn ${activeTab === 'code' ? 'active' : ''}`}>💻 Source Code</button>
       </div>
 
-      {/* Panel */}
-      <div style={{ background: '#fff', padding: '24px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+      {/* Main Display Card */}
+      <div style={{
+        background: 'var(--bg-card)',
+        padding: '8px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+        maxWidth: '100%',
+        overflowX: 'auto',
+        transition: 'all 0.2s'
+      }}>
         {activeTab === 'ui' && Component ? (
-          <Component />
+          /* 💡 THE ISOLATION LAYER: 
+            Reverting text/background variables back to standard defaults stops theme leaks! 
+          */
+          <div style={{
+            all: 'initial',                // Resets all standard inherited styles
+            color: '#000000',              // Forces a fallback basic light text standard default
+            backgroundColor: '#ffffff',    // Forces a solid clean canvas background base
+            fontFamily: 'sans-serif',      // Restores standard font rendering defaults
+            display: 'block',
+            padding: '8px',
+            borderRadius: '4px'
+          }}>
+            <Component />
+          </div>
         ) : (
           <CodeViewer files={files} />
         )}
       </div>
+
+      {/* Dynamic Tab Styles utilizing CSS Tokens */}
+      <style>{`
+        .tab-btn {
+          padding: 8px 16px; border: none; background: transparent; 
+          color: var(--text-secondary); border-radius: 4px; cursor: pointer; font-weight: bold;
+        }
+        .tab-btn.active {
+          background: var(--tab-active-bg);
+          color: var(--tab-active-text);
+        }
+      `}</style>
     </main>
   );
 }
