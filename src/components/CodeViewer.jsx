@@ -23,9 +23,9 @@ export default function CodeViewer({ files }) {
           background: '#0f172a', 
           padding: '8px', 
           borderRadius: '6px',
-          overflowX: 'auto',         // Allows horizontal scrolling
-          whiteSpace: 'nowrap',      // Prevents buttons from wrapping to the next line
-          WebkitOverflowScrolling: 'touch' // Makes scrolling smooth on trackpads/mobile
+          overflowX: 'auto',
+          whiteSpace: 'nowrap',
+          WebkitOverflowScrolling: 'touch'
         }}
       >
         {files.map((file, index) => (
@@ -41,7 +41,7 @@ export default function CodeViewer({ files }) {
               background: activeFileIndex === index ? '#3b82f6' : 'transparent',
               color: '#fff',
               fontWeight: activeFileIndex === index ? 'bold' : 'normal',
-              flexShrink: 0          // Crucial: Prevents buttons from squeezing/shrinking
+              flexShrink: 0
             }}
           >
             📄 {file.name}
@@ -49,8 +49,11 @@ export default function CodeViewer({ files }) {
         ))}
       </div>
 
-      {/* Syntax Highlighter */}
-      <div style={{ borderRadius: '8px', overflow: 'hidden', fontSize: '14px' }}>
+      {/* Syntax Highlighter - ⚠️ Added the wrapper div with a UNIQUE key! */}
+      <div 
+        key={currentFile.name} // 👈 THIS reset rule forces a fresh remount on file change!
+        style={{ borderRadius: '8px', overflow: 'hidden', fontSize: '14px' }}
+      >
         <SyntaxHighlighter 
           language="javascript" 
           style={tomorrow} 
