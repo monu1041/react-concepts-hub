@@ -2,9 +2,10 @@
 import React from 'react';
 import { topics } from '../topics/topicsRegistry';
 
-export default function Sidebar({ activeTopicId, setActiveTopicId }) {
+export default function Sidebar({ activeTopicId, setActiveTopicId, isOpen }) {
   return (
     <aside 
+      className={`app-sidebar ${isOpen ? 'open' : ''}`}
       style={{ 
         width: '280px', 
         background: '#1e1e24', 
@@ -12,24 +13,23 @@ export default function Sidebar({ activeTopicId, setActiveTopicId }) {
         height: '100vh', 
         padding: '20px', 
         boxSizing: 'border-box',
-        display: 'flex',            // 1. Turn sidebar into a flexbox layout
-        flexDirection: 'column'     // 2. Stack header and list vertically
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 50
       }}
     >
-      {/* This header stays permanently fixed at the top */}
       <h2 style={{ fontSize: '20px', marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '10px', flexShrink: 0 }}>
         📚 Dev Journal
       </h2>
       
-      {/* This wrapper list will handle all the scrolling */}
       <ul 
         style={{ 
           listStyle: 'none', 
           padding: 0, 
           margin: 0,
-          overflowY: 'auto',        // 3. Allows vertical scrolling when content overflows
-          flex1: 1,                 // 4. Takes up all remaining vertical space
-          paddingRight: '4px'       // Adds a tiny gap so the scrollbar doesn't hug the text
+          overflowY: 'auto',
+          flex: 1,
+          paddingRight: '4px'
         }}
       >
         {topics.map((topic) => (
@@ -50,6 +50,24 @@ export default function Sidebar({ activeTopicId, setActiveTopicId }) {
           </li>
         ))}
       </ul>
+
+      {/* Responsive styles handling slide animation */}
+      <style>{`
+        @media (max-width: 768px) {
+          .app-sidebar {
+            position: fixed !important;
+            top: 50px; /* Sits right beneath the mobile header bar */
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            width: 100% !important; /* Full width drawer on mobile */
+            height: calc(100vh - 50px) !important;
+          }
+          .app-sidebar.open {
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </aside>
   );
 }
