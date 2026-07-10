@@ -25,7 +25,15 @@ export default function Dashboard({ topic }) {
   if (isLoading) return <div style={{ padding: '40px', flex: 1, color: 'var(--text-secondary)' }}>⚡ Loading assets...</div>;
 
   return (
-    <main style={{ flex: 1, padding: '40px', backgroundColor: 'var(--bg-main)', height: '100%', overflowY: 'auto', boxSizing: 'border-box', transition: 'all 0.2s' }}>
+    <main style={{ 
+      flex: 1, 
+      padding: '24px',          // Slightly lowered padding for cleaner layout frames
+      backgroundColor: 'var(--bg-main)', 
+      height: '100%',           // Fills exactly the container framework passed by App.jsx
+      overflowY: 'auto', 
+      boxSizing: 'border-box',
+      transition: 'all 0.2s'
+    }}>
       <div style={{ marginBottom: '24px' }}>
         <h1 style={{ margin: '0 0 8px 0', color: 'var(--text-primary)' }}>{topic.title}</h1>
         <p style={{ margin: 0, color: 'var(--text-secondary)' }}>{topic.description}</p>
@@ -38,36 +46,22 @@ export default function Dashboard({ topic }) {
       </div>
 
       {/* Main Display Card */}
-      <div style={{
-        background: 'var(--bg-card)',
-        padding: '8px',
-        borderRadius: '8px',
-        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-        maxWidth: '100%',
-        overflowX: 'auto',
+      <div style={{ 
+        background: 'var(--bg-card)', 
+        padding: '24px', 
+        borderRadius: '8px', 
+        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', 
+        maxWidth: '100%', 
+        overflowX: 'auto', 
         transition: 'all 0.2s'
       }}>
         {activeTab === 'ui' && Component ? (
-          /* 💡 THE ISOLATION LAYER: 
-            Reverting text/background variables back to standard defaults stops theme leaks! 
-          */
-          <div style={{
-            all: 'initial',                // Resets all standard inherited styles
-            color: '#000000',              // Forces a fallback basic light text standard default
-            backgroundColor: '#ffffff',    // Forces a solid clean canvas background base
-            fontFamily: 'sans-serif',      // Restores standard font rendering defaults
-            display: 'block',
-            padding: '8px',
-            borderRadius: '4px'
-          }}>
-            <Component />
-          </div>
+          <div style={{ color: 'initial', backgroundColor: 'initial' }}><Component /></div>
         ) : (
           <CodeViewer files={files} />
         )}
       </div>
 
-      {/* Dynamic Tab Styles utilizing CSS Tokens */}
       <style>{`
         .tab-btn {
           padding: 8px 16px; border: none; background: transparent; 
