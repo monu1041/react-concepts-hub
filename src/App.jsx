@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div style={{ 
       display: 'flex', 
-      flexDirection: 'column', // 👈 Stack navbar and content vertically
+      flexDirection: 'column', 
       width: '100%', 
       height: '100%', 
       overflow: 'hidden', 
@@ -25,9 +25,9 @@ export default function App() {
       transition: 'background-color 0.2s, color 0.2s'
     }}>
       
-      {/* Top Navbar Header Component (Now sitting natively at the top of the stack) */}
+      {/* Top Navbar Header Toolbar */}
       <div style={{
-        height: '56px',         // Fixed layout heights
+        height: '56px', 
         background: 'var(--bg-sidebar)', 
         display: 'flex', 
         alignItems: 'center',
@@ -46,18 +46,18 @@ export default function App() {
           >
             {isSidebarOpen ? '✕' : '☰'}
           </button>
-          <span style={{ color: 'var(--text-sidebar)', fontWeight: 'bold', fontSize: '18px' }}>Dev Journal</span>
+          <span style={{ color: 'var(--text-sidebar)', fontWeight: 'bold', fontSize: '18px', transition: 'color 0.2s' }}>
+            Dev Journal
+          </span>
         </div>
 
-        <button onClick={toggleTheme} style={{ background: isDark ? '#334155' : '#3b82f6', border: 'none', color: '#fff', padding: '8px 14px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>
+        <button onClick={toggleTheme} style={{ background: isDark ? '#334155' : '#3b82f6', border: 'none', color: '#fff', padding: '8px 14px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold', transition: 'background-color 0.2s' }}>
           {isDark ? '☀️ Light' : '🌙 Dark'}
         </button>
       </div>
 
-      {/* 💡 The Workspace Container: 
-          Takes up 100% of the REMAINING height below the 56px navbar! 
-      */}
-      <div style={{ display: 'flex', flex: 1, width: '100%', height: 'calc(100% - 56px)', overflow: 'hidden', position: 'relative' }}>
+      {/* Responsive App Workspace Wrapper */}
+      <div className="app-workspace-container">
         <Sidebar activeTopicId={activeTopicId} setActiveTopicId={(id) => { setActiveTopicId(id); setIsSidebarOpen(false); }} isOpen={isSidebarOpen} />
         <Dashboard topic={currentTopic} />
       </div>
@@ -65,9 +65,26 @@ export default function App() {
       <style>{`
         .mobile-toggle-btn { display: none; }
         
+        /* 🖥️ Desktop Styling Constraints */
+        .app-workspace-container {
+          display: flex; 
+          flex: 1; 
+          width: 100%; 
+          height: calc(100% - 56px); 
+          overflow: hidden; 
+          position: relative;
+        }
+        
+        /* 📱 Mobile Styling Overrides */
         @media (max-width: 768px) {
           .mobile-toggle-btn { display: inline-block; }
-          /* Mobile structural slide alignments override setup */
+          
+          .app-workspace-container {
+            display: block;      /* Unlocks structural flexibility */
+            height: auto;        /* Grow natively with the flow */
+            overflow: visible;
+          }
+
           .app-sidebar {
             position: fixed !important;
             top: 56px;

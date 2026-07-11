@@ -1,24 +1,41 @@
-/* Base Layout Resets */
+/* src/index.css */
+
+/* 🖥️ Base Layout Resets (Desktop Defaults) */
 html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: hidden; 
   font-family: sans-serif;
+}
+
+/* 📱 Responsive Mobile Overrides (Restores Pull-to-Refresh) */
+@media (max-width: 768px) {
+  html, body {
+    overflow-y: auto;                  /* Restores native viewport scroll mechanics */
+    height: auto;                      /* Let body grow naturally with content */
+    -webkit-overflow-scrolling: touch; /* Butter-smooth momentum scroll on iOS */
+  }
+  
+  #root {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 /* ☀️ Light Mode Tokens (Defaults) */
 :root {
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
-  --bg-sidebar: #e2e8f0;      /* Fixed: Removed the dark overwrite */
+  --bg-sidebar: #e2e8f0;      
   --text-primary: #0f172a;
   --text-secondary: #64748b;
-  --text-sidebar: #0f172a;    /* Added: Dark text for light sidebar */
+  --text-sidebar: #0f172a;    
   --border-color: #cbd5e1;
   --tab-active-bg: #0f172a;
   --tab-active-text: #ffffff;
+  scrollbar-color: #cbd5e1 #f1f5f9;   /* Firefox Thumb/Track */
 }
 
 /* 🌙 Dark Mode Tokens */
@@ -28,37 +45,20 @@ html, body, #root {
   --bg-sidebar: #020617;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-sidebar: #f8fafc;    /* Added: Light text for dark sidebar */
+  --text-sidebar: #f8fafc;    
   --border-color: #334155;
   --tab-active-bg: #f8fafc;
   --tab-active-text: #0f172a;
+  scrollbar-color: #475569 #0f172a;   /* Firefox Thumb/Track */
 }
 
-/* ==========================================
-   🔄 DYNAMIC THEME-AWARE SCROLLBAR ENHANCEMENTS
-   ========================================== */
-
-/* Universal scrollbar sizing defaults */
+/* 🔄 Universal Scrollbar Transitions */
 ul, main, div {
-  scrollbar-width: thin; /* Clean, compact scrollbar trail for Firefox */
+  scrollbar-width: thin;
   transition: scrollbar-color 0.2s;
 }
 
-/* ☀️ Light Theme Scrollbar Map */
-:root {
-  scrollbar-color: #cbd5e1 #f1f5f9; /* [Thumb Color] [Track Color] */
-}
-
-/* 🌙 Dark Theme Scrollbar Override Map */
-[data-theme="dark"] {
-  scrollbar-color: #475569 #0f172a; /* [Thumb Color] [Track Color] */
-}
-
-/* ==========================================
-   🌐 WEBKIT UTILITIES (Chrome, Safari, Edge support)
-   ========================================== */
-   
-/* ☀️ Light Mode Webkit Styles */
+/* 🌐 Webkit Utilities (Chrome, Safari, Edge support) */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -75,7 +75,7 @@ ul, main, div {
   background-color: #94a3b8;
 }
 
-/* 🌙 Dark Mode Webkit Styles */
+/* 🌙 Dark Mode Webkit Specific Overrides */
 [data-theme="dark"] ::-webkit-scrollbar-track {
   background: #0f172a;
 }
