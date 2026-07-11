@@ -1,0 +1,1 @@
+import{t as e}from"./redux-toolkit.modern-D3qioA1R.js";import{n as t}from"./cartSlice-BnzUK-RL.js";var n=e({reducer:{cart:t}});export{n as store};
