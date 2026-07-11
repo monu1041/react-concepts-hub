@@ -21,6 +21,13 @@ export const topics = [
     category: 'State Management',
     description: 'A complete Redux Toolkit architecture.',
     entryFile: 'ShoppingCartRedux.jsx'
+  },
+  {
+    id: 'product-slice-async', // 👈 Folder name matches exactly
+    title: 'Async Product Slice',
+    category: 'State Management',
+    description: 'A Redux Toolkit slice with async thunks for product data management.',
+    entryFile: 'App.jsx'
   }
 ];
 
