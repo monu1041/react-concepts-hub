@@ -28,6 +28,13 @@ export const topics = [
     category: 'State Management',
     description: 'A Redux Toolkit slice with async thunks for product data management.',
     entryFile: 'App.jsx'
+  },
+  {
+    id: 'notification-slice', // 👈 Folder name matches exactly
+    title: 'Notification Slice',
+    category: 'State Management',
+    description: 'A Redux Toolkit slice for managing notification state.',
+    entryFile: 'App.jsx'
   }
 ];
 
