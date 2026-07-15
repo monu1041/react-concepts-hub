@@ -1,40 +1,63 @@
-// components/NormalSearch.jsx
-
 import { useMemo, useState } from "react";
-import ProductList from "./ProductList";
-import { generateProducts } from "../data/generateProducts";
 
-const products = generateProducts();
+import ProductList from "./ProductList";
+import { products } from "../data/products";
+
 
 const NormalSearch = () => {
+
   const [search, setSearch] = useState("");
 
+
   const filteredProducts = useMemo(() => {
+
     return products.filter((product) =>
       product.name
         .toLowerCase()
-        .includes(search.toLowerCase())
+        .includes(
+          search.toLowerCase()
+        )
     );
+
   }, [search]);
 
+
+
   return (
+
     <div className="section">
-      <h2>Normal Search</h2>
+
+      <h2>
+        🔴 Normal Search
+      </h2>
+
 
       <input
-        type="text"
-        placeholder="Search products..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) =>
+          setSearch(e.target.value)
+        }
+        placeholder="Search 500000 products..."
       />
 
+
       <p>
-        Showing {filteredProducts.length} products
+        Results:
+        <strong>
+          {" "}
+          {filteredProducts.length}
+        </strong>
       </p>
 
-      <ProductList products={filteredProducts} />
+
+      <ProductList
+        products={filteredProducts}
+      />
+
     </div>
+
   );
 };
+
 
 export default NormalSearch;

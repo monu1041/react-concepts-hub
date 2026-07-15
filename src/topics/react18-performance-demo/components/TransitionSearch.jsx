@@ -1,5 +1,3 @@
-// components/TransitionSearch.jsx
-
 import {
   useMemo,
   useState,
@@ -7,58 +5,101 @@ import {
 } from "react";
 
 import ProductList from "./ProductList";
-import Spinner from "./Spinner";
-import { generateProducts } from "../data/generateProducts";
+import { products } from "../data/products";
 
-const products = generateProducts();
 
 const TransitionSearch = () => {
-  const [search, setSearch] = useState("");
 
-  const [query, setQuery] = useState("");
+  const [search, setSearch] =
+    useState("");
 
-  const [isPending, startTransition] =
-    useTransition();
+  const [query, setQuery] =
+    useState("");
+
+
+  const [
+    isPending,
+    startTransition
+  ] = useTransition();
+
+
 
   const filteredProducts = useMemo(() => {
+
     return products.filter((product) =>
       product.name
         .toLowerCase()
-        .includes(query.toLowerCase())
+        .includes(
+          query.toLowerCase()
+        )
     );
+
   }, [query]);
 
+
+
   const handleChange = (e) => {
+
     const value = e.target.value;
 
-    // Urgent
+
+    // Immediate update
     setSearch(value);
 
-    // Non-Urgent
+
+    // Low priority update
     startTransition(() => {
+
       setQuery(value);
+
     });
+
   };
 
+
+
   return (
+
     <div className="section">
-      <h2>Search using useTransition</h2>
+
+      <h2>
+        🟢 useTransition Search
+      </h2>
+
 
       <input
         value={search}
         onChange={handleChange}
-        placeholder="Search..."
+        placeholder="Search 500000 products..."
       />
 
-      {isPending && <Spinner />}
+
+      {
+        isPending &&
+        <p>
+          Filtering...
+        </p>
+      }
+
 
       <p>
-        Showing {filteredProducts.length} products
+        Results:
+        <strong>
+          {" "}
+          {filteredProducts.length}
+        </strong>
       </p>
 
-      <ProductList products={filteredProducts} />
+
+      <ProductList
+        products={filteredProducts}
+      />
+
+
     </div>
+
   );
 };
+
 
 export default TransitionSearch;
