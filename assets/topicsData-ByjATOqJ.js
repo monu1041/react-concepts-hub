@@ -30,5 +30,13 @@ export const topicsData = [\r
     description: 'A Redux Toolkit slice for managing notification state.',\r
     entryFile: 'App.jsx'\r
   }\r
+  ,\r
+  {\r
+    id: 'react18-performance-demo', \r
+    title: 'React 18 Performance Demo',\r
+    category: 'Performance',\r
+    description: 'A demo showcasing React 18 performance improvements.',\r
+    entryFile: 'App.jsx'\r
+  }\r
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.\r
 ];`;export{e as default};
