@@ -8,17 +8,19 @@
 .react18-demo *,
 .react18-demo *::before,
 .react18-demo *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .react18-demo .container {
   width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .react18-demo .section {
-  background: white;
+  background: #fff;
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 10px;
@@ -29,7 +31,11 @@
   margin-bottom: 15px;
 }
 
-.react18-demo input {
+.react18-demo input[type="text"],
+.react18-demo input[type="search"],
+.react18-demo input[type="email"],
+.react18-demo input[type="number"],
+.react18-demo input:not([type]) {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -56,7 +62,7 @@
 
 .react18-demo .navbar {
   background: #222;
-  color: white;
+  color: #fff;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 8px;
@@ -70,14 +76,10 @@
 }
 
 .react18-demo .dashboard {
-  background: white;
+  background: #fff;
   padding: 25px;
   border-radius: 10px;
   margin-top: 20px;
-}
-
-.react18-demo hr {
-  margin: 30px 0;
 }
 
 .react18-demo h1 {
@@ -86,4 +88,8 @@
 
 .react18-demo p {
   margin: 8px 0;
+}
+
+.react18-demo hr {
+  margin: 30px 0;
 }
