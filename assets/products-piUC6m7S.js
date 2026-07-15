@@ -1,1 +1,0 @@
-function e(){return Array.from({length:5e6},(e,t)=>({id:t+1,name:`Product ${t+1}`,price:Math.floor(Math.random()*1e3)+100}))}var t=e();export{t};
