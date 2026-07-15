@@ -1,21 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.react18-demo {
+  background: #f4f4f4;
+  min-height: 100vh;
+  padding: 30px 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: #f4f4f4;
+.react18-demo *,
+.react18-demo *::before,
+.react18-demo *::after {
+  box-sizing: border-box;
 }
 
-.container {
+.react18-demo .container {
   width: 90%;
   max-width: 1200px;
-  margin: 30px auto;
+  margin: 0 auto;
 }
 
-.section {
+.react18-demo .section {
   background: white;
   padding: 20px;
   margin-bottom: 30px;
@@ -23,36 +25,36 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.section h2 {
+.react18-demo .section h2 {
   margin-bottom: 15px;
 }
 
-input {
+.react18-demo input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   font-size: 16px;
 }
 
-.product-list {
+.react18-demo .product-list {
   max-height: 350px;
   overflow-y: auto;
   border: 1px solid #ddd;
 }
 
-.product {
+.react18-demo .product {
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
 
-.spinner {
+.react18-demo .spinner {
   text-align: center;
   padding: 20px;
   font-size: 20px;
   color: #0077ff;
 }
 
-.navbar {
+.react18-demo .navbar {
   background: #222;
   color: white;
   padding: 15px;
@@ -60,16 +62,28 @@ input {
   border-radius: 8px;
 }
 
-.dashboard-btn {
+.react18-demo .dashboard-btn {
   padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
 }
 
-.dashboard {
+.react18-demo .dashboard {
   background: white;
   padding: 25px;
   border-radius: 10px;
   margin-top: 20px;
+}
+
+.react18-demo hr {
+  margin: 30px 0;
+}
+
+.react18-demo h1 {
+  margin-bottom: 25px;
+}
+
+.react18-demo p {
+  margin: 8px 0;
 }

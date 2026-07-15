@@ -6,7 +6,6 @@ import Spinner from "./components/Spinner";
 import NormalSearch from "./components/NormalSearch";
 import TransitionSearch from "./components/TransitionSearch";
 import DeferredSearch from "./components/DeferredSearch";
-import "./App.css";
 
 const Dashboard = lazy(() => import("./components/Dashboard"));
 
@@ -14,31 +13,33 @@ function App() {
   const [showDashboard, setShowDashboard] = useState(false);
 
   return (
-    <div className="container">
-      <Navbar />
+    <div className="react18-demo">
+      <div className="container">
+        <Navbar />
 
-      <h1>React 18 Performance Demo</h1>
+        <h1>React 18 Performance Demo</h1>
 
-      <NormalSearch />
+        <NormalSearch />
 
-      <TransitionSearch />
+        <TransitionSearch />
 
-      <DeferredSearch />
+        <DeferredSearch />
 
-      <hr />
+        <hr />
 
-      <button
-        className="dashboard-btn"
-        onClick={() => setShowDashboard(true)}
-      >
-        Load Dashboard
-      </button>
+        <button
+          className="dashboard-btn"
+          onClick={() => setShowDashboard(true)}
+        >
+          Load Dashboard
+        </button>
 
-      {showDashboard && (
-        <Suspense fallback={<Spinner />}>
-          <Dashboard />
-        </Suspense>
-      )}
+        {showDashboard && (
+          <Suspense fallback={<Spinner />}>
+            <Dashboard />
+          </Suspense>
+        )}
+      </div>
     </div>
   );
 }
