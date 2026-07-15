@@ -8,17 +8,19 @@ var e=`.react18-demo {\r
 .react18-demo *,\r
 .react18-demo *::before,\r
 .react18-demo *::after {\r
+  margin: 0;\r
+  padding: 0;\r
   box-sizing: border-box;\r
 }\r
 \r
 .react18-demo .container {\r
   width: 90%;\r
   max-width: 1200px;\r
-  margin: 0 auto;\r
+  margin: 30px auto;\r
 }\r
 \r
 .react18-demo .section {\r
-  background: white;\r
+  background: #fff;\r
   padding: 20px;\r
   margin-bottom: 30px;\r
   border-radius: 10px;\r
@@ -29,7 +31,11 @@ var e=`.react18-demo {\r
   margin-bottom: 15px;\r
 }\r
 \r
-.react18-demo input {\r
+.react18-demo input[type="text"],\r
+.react18-demo input[type="search"],\r
+.react18-demo input[type="email"],\r
+.react18-demo input[type="number"],\r
+.react18-demo input:not([type]) {\r
   width: 100%;\r
   padding: 10px;\r
   margin-bottom: 15px;\r
@@ -56,7 +62,7 @@ var e=`.react18-demo {\r
 \r
 .react18-demo .navbar {\r
   background: #222;\r
-  color: white;\r
+  color: #fff;\r
   padding: 15px;\r
   margin-bottom: 20px;\r
   border-radius: 8px;\r
@@ -70,14 +76,10 @@ var e=`.react18-demo {\r
 }\r
 \r
 .react18-demo .dashboard {\r
-  background: white;\r
+  background: #fff;\r
   padding: 25px;\r
   border-radius: 10px;\r
   margin-top: 20px;\r
-}\r
-\r
-.react18-demo hr {\r
-  margin: 30px 0;\r
 }\r
 \r
 .react18-demo h1 {\r
@@ -86,4 +88,8 @@ var e=`.react18-demo {\r
 \r
 .react18-demo p {\r
   margin: 8px 0;\r
+}\r
+\r
+.react18-demo hr {\r
+  margin: 30px 0;\r
 }`;export{e as default};
