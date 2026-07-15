@@ -1,23 +1,26 @@
-var e=`// components/DeferredSearch.jsx\r
-\r
-import {\r
+var e=`import {\r
   useDeferredValue,\r
   useMemo,\r
   useState,\r
 } from "react";\r
 \r
 import ProductList from "./ProductList";\r
-import { generateProducts } from "../data/generateProducts";\r
+import { products } from "../data/products";\r
 \r
-const products = generateProducts();\r
 \r
 const DeferredSearch = () => {\r
-  const [search, setSearch] = useState("");\r
+\r
+  const [search, setSearch] =\r
+    useState("");\r
+\r
 \r
   const deferredSearch =\r
     useDeferredValue(search);\r
 \r
+\r
+\r
   const filteredProducts = useMemo(() => {\r
+\r
     return products.filter((product) =>\r
       product.name\r
         .toLowerCase()\r
@@ -25,27 +28,65 @@ const DeferredSearch = () => {\r
           deferredSearch.toLowerCase()\r
         )\r
     );\r
+\r
   }, [deferredSearch]);\r
 \r
+\r
+\r
   return (\r
+\r
     <div className="section">\r
-      <h2>Search using useDeferredValue</h2>\r
+\r
+      <h2>\r
+        🔵 useDeferredValue Search\r
+      </h2>\r
+\r
 \r
       <input\r
         value={search}\r
         onChange={(e) =>\r
           setSearch(e.target.value)\r
         }\r
-        placeholder="Search..."\r
+        placeholder="Search 500000 products..."\r
       />\r
 \r
+\r
       <p>\r
-        Showing {filteredProducts.length} products\r
+        Current:\r
+        <strong>\r
+          {" "}\r
+          {search}\r
+        </strong>\r
       </p>\r
 \r
-      <ProductList products={filteredProducts} />\r
+\r
+      <p>\r
+        Deferred:\r
+        <strong>\r
+          {" "}\r
+          {deferredSearch}\r
+        </strong>\r
+      </p>\r
+\r
+\r
+      <p>\r
+        Results:\r
+        <strong>\r
+          {" "}\r
+          {filteredProducts.length}\r
+        </strong>\r
+      </p>\r
+\r
+\r
+      <ProductList\r
+        products={filteredProducts}\r
+      />\r
+\r
+\r
     </div>\r
+\r
   );\r
 };\r
+\r
 \r
 export default DeferredSearch;`;export{e as default};
