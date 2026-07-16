@@ -1,6 +1,5 @@
 var e=`import { lazy, Suspense, useState } from "react";\r
 \r
-import Navbar from "./components/Navbar";\r
 import Spinner from "./components/Spinner";\r
 \r
 import NormalSearch from "./components/NormalSearch";\r
@@ -15,9 +14,6 @@ function App() {\r
   return (\r
     <div className="react18-demo">\r
       <div className="container">\r
-        <Navbar />\r
-\r
-        <h1>React 18 Performance Demo</h1>\r
 \r
         <NormalSearch />\r
 \r

@@ -1,1 +1,0 @@
-import{r as e,t}from"./index-DsPDJxTB.js";var n=e(),r=t(),i=()=>{let e=(0,n.c)(1),t;return e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,r.jsx)(`div`,{className:`navbar`,children:(0,r.jsx)(`h2`,{children:`🚀 React 18 Performance Demo`})}),e[0]=t):t=e[0],t};export{i as default};
