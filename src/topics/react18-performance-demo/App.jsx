@@ -1,6 +1,5 @@
 import { lazy, Suspense, useState } from "react";
 
-import Navbar from "./components/Navbar";
 import Spinner from "./components/Spinner";
 
 import NormalSearch from "./components/NormalSearch";
@@ -15,9 +14,6 @@ function App() {
   return (
     <div className="react18-demo">
       <div className="container">
-        <Navbar />
-
-        <h1>React 18 Performance Demo</h1>
 
         <NormalSearch />
 
