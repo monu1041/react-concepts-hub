@@ -9,4 +9,7 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] })
   ],
   base: '/react-concepts-hub/',
+  include: [
+    "tests/**/*.test.jsx"
+  ]
 })
