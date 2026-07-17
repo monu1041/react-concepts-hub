@@ -1,0 +1,1 @@
+var e=`import "@testing-library/jest-dom/vitest";`;export{e as default};
