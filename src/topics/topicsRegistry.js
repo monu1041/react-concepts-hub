@@ -5,18 +5,30 @@ import { topicsData } from './topicsData';
 const componentModules = import.meta.glob('./**/*.jsx');
 const rawFileModules = import.meta.glob('./**/*', { query: '?raw' });
 
-// 2. Map and enrich the static configuration with dynamic loader functions
+// 2. Map and enrich static configuration with dynamic loader functions
 export const topics = topicsData.map(topic => {
   const folderPath = `./${topic.id}`;
   const componentPath = `${folderPath}/${topic.entryFile}`;
 
-  // Initialize placeholder loaders
+  // UI Component Loader
   let loadComponent = () => Promise.resolve({ default: () => null });
-  
   if (componentModules[componentPath]) {
     loadComponent = componentModules[componentPath];
   }
 
+  // 💡 README Loader: Find if any readme exists in this specific topic folder
+  const readmePathKey = Object.keys(rawFileModules).find(
+    path => path.startsWith(folderPath) && path.toLowerCase().endsWith('readme.md')
+  );
+  
+  const loadReadme = readmePathKey 
+    ? async () => {
+        const module = await rawFileModules[readmePathKey]();
+        return module.default;
+      }
+    : async () => null;
+
+  // Source Code Files Loader
   const loadFiles = async () => {
     const matchedFiles = [];
     const exclusions = topic.excludeFiles || [];
@@ -25,7 +37,8 @@ export const topics = topicsData.map(topic => {
       if (filePath.startsWith(folderPath)) {
         const fileName = filePath.replace(`${folderPath}/`, '').replace('?raw', '');
         
-        if (exclusions.includes(fileName)) {
+        // 💡 EXCLUSION FIX: Skip explicit exclusions AND skip README.md so it doesn't show in code tabs!
+        if (exclusions.includes(fileName) || fileName.toLowerCase() === 'readme.md') {
           continue;
         }
 
@@ -39,10 +52,10 @@ export const topics = topicsData.map(topic => {
     return matchedFiles.sort((a, b) => a.name.localeCompare(b.name));
   };
 
-  // Return the newly compiled portfolio topic item
   return {
     ...topic,
     loadComponent,
+    loadReadme,
     loadFiles
   };
 });
