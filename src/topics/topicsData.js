@@ -29,13 +29,19 @@ export const topicsData = [
     category: 'State Management',
     description: 'A Redux Toolkit slice for managing notification state.',
     entryFile: 'App.jsx'
-  }
-  ,
+  },
   {
     id: 'react18-performance-demo', 
     title: 'React 18 Performance Demo',
     category: 'Performance',
     description: 'A demo showcasing React 18 performance improvements.',
+    entryFile: 'App.jsx'
+  },
+  {
+    id: 'react-testing-and-best-practices', 
+    title: 'React Testing and Best Practices',
+    category: 'Testing',
+    description: 'A demo showcasing React testing techniques and best practices.',
     entryFile: 'App.jsx'
   }
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.
