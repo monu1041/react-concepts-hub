@@ -16,7 +16,7 @@ export const topics = topicsData.map(topic => {
     loadComponent = componentModules[componentPath];
   }
 
-  // 💡 README Loader: Find if any readme exists in this specific topic folder
+  // 💡 README Discovery & Loader: Case-insensitive check for README.md
   const readmePathKey = Object.keys(rawFileModules).find(
     path => path.startsWith(folderPath) && path.toLowerCase().endsWith('readme.md')
   );
@@ -37,7 +37,7 @@ export const topics = topicsData.map(topic => {
       if (filePath.startsWith(folderPath)) {
         const fileName = filePath.replace(`${folderPath}/`, '').replace('?raw', '');
         
-        // 💡 EXCLUSION FIX: Skip explicit exclusions AND skip README.md so it doesn't show in code tabs!
+        // Skip explicitly excluded files AND skip README.md so it only appears in the dedicated tab
         if (exclusions.includes(fileName) || fileName.toLowerCase() === 'readme.md') {
           continue;
         }
@@ -54,6 +54,7 @@ export const topics = topicsData.map(topic => {
 
   return {
     ...topic,
+    hasReadme: Boolean(readmePathKey), // 👈 Exposes true/false automatically for conditional UI rendering!
     loadComponent,
     loadReadme,
     loadFiles
