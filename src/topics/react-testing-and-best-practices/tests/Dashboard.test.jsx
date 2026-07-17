@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import Dashboard from "../src/components/Dashboard";
+import Dashboard from "../components/Dashboard";
 
 describe("Dashboard", () => {
   test("shows loading state", () => {
