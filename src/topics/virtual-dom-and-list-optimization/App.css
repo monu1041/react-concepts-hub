@@ -1,0 +1,134 @@
+/* ================================
+   Project: Virtual DOM & List Optimization
+   Scope: .virtual-dom-list-optimization
+   ================================ */
+
+.virtual-dom-list-optimization,
+.virtual-dom-list-optimization *,
+.virtual-dom-list-optimization *::before,
+.virtual-dom-list-optimization *::after {
+    box-sizing: border-box;
+}
+
+.virtual-dom-list-optimization {
+    width: 700px;
+    margin: 40px auto;
+    padding: 25px;
+
+    background: #f5f7fb;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    border-radius: 10px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.virtual-dom-list-optimization h1 {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #222;
+}
+
+.virtual-dom-list-optimization hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.virtual-dom-list-optimization .todo-input-section {
+    display: flex;
+    gap: 10px;
+}
+
+.virtual-dom-list-optimization input {
+    flex: 1;
+
+    padding: 10px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.virtual-dom-list-optimization input:focus {
+    border-color: #1976d2;
+}
+
+.virtual-dom-list-optimization button {
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #1976d2;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.virtual-dom-list-optimization button:hover {
+    background: #1259a8;
+}
+
+.virtual-dom-list-optimization .todo-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 6px;
+}
+
+.virtual-dom-list-optimization .todo-item span {
+    font-size: 16px;
+}
+
+.virtual-dom-list-optimization .todo-buttons {
+    display: flex;
+
+    gap: 8px;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(1) {
+    background: #43a047;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(1):hover {
+    background: #2e7d32;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(2) {
+    background: #ff9800;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(2):hover {
+    background: #ef6c00;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(3) {
+    background: #e53935;
+}
+
+.virtual-dom-list-optimization .todo-buttons button:nth-child(3):hover {
+    background: #c62828;
+}

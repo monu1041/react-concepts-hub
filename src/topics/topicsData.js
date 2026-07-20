@@ -43,6 +43,13 @@ export const topicsData = [
     category: 'Testing',
     description: 'A demo showcasing React testing techniques and best practices.',
     entryFile: 'App.jsx'
+  },
+  {
+    id: 'virtual-dom-and-list-optimization', 
+    title: 'Virtual DOM and List Optimization',
+    category: 'Performance',
+    description: 'A demo showcasing Virtual DOM and list optimization techniques.',
+    entryFile: 'App.jsx'
   }
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.
 ];
