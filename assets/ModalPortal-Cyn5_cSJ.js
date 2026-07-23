@@ -1,0 +1,1 @@
+import{n as e,r as t}from"./rolldown-runtime-QTnfLwEv.js";import{a as n}from"./index-Bzw5-tGo.js";var r=e({default:()=>s}),i=t(n(),1),a=`advanced-react-patterns-modal-root`;function o(){let e=document.getElementById(a);return e||(e=document.createElement(`div`),e.id=a,document.body.appendChild(e)),e}function s({children:e}){return(0,i.createPortal)(e,o())}export{r as n,s as t};

@@ -1,0 +1,1 @@
+import{n as e,r as t}from"./rolldown-runtime-QTnfLwEv.js";import{o as n}from"./index-Bzw5-tGo.js";var r=e({default:()=>a,useDropdownContext:()=>o}),i=t(n(),1),a=(0,i.createContext)(null);function o(){let e=(0,i.useContext)(a);if(!e)throw Error(`Dropdown components must be used inside Dropdown`);return e}export{r as n,o as r,a as t};
