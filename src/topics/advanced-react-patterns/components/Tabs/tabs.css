@@ -1,0 +1,145 @@
+.advanced-react-patterns * {
+    box-sizing: border-box;
+}
+
+
+/* Tabs wrapper */
+
+.advanced-react-patterns .tabs {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    font-family:
+        Inter,
+        system-ui,
+        sans-serif;
+}
+
+
+
+/*
+    Tab buttons container
+
+    role="tablist"
+*/
+
+.advanced-react-patterns .tabs-list {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 6px;
+
+    border-bottom:
+        1px solid #ddd;
+
+}
+
+
+
+/*
+    Individual tab button
+*/
+
+.advanced-react-patterns .tabs-trigger {
+
+    border: none;
+
+    background: transparent;
+
+    padding:
+        10px 18px;
+
+    border-radius:
+        6px 6px 0 0;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    color: #555;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+
+}
+
+
+
+/*
+    Hover state
+*/
+
+.advanced-react-patterns
+.tabs-trigger:hover {
+
+    background:
+        #f3f4f6;
+
+}
+
+
+
+/*
+    Keyboard focus
+
+    Important for accessibility
+*/
+
+.advanced-react-patterns
+.tabs-trigger:focus-visible {
+
+    outline:
+
+        3px solid
+        #2563eb;
+
+    outline-offset:
+        2px;
+
+}
+
+
+
+/*
+    Active tab
+*/
+
+.advanced-react-patterns
+.tabs-trigger.active {
+
+    color:
+        #2563eb;
+
+    background:
+        #eff6ff;
+
+    font-weight:
+        600;
+
+}
+
+
+
+/*
+    Content panel
+*/
+
+.advanced-react-patterns
+.tabs-content {
+
+    padding:
+        20px;
+
+    border:
+        1px solid #ddd;
+
+    border-top:
+        none;
+
+    min-height:
+        120px;
+
+}

@@ -1,0 +1,218 @@
+/*
+    Advanced React Patterns
+    Modal Component Styles
+*/
+
+
+#advanced-react-patterns-modal-root {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+
+/*
+    Trigger
+*/
+
+.advanced-react-patterns .modal-trigger {
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+
+
+.advanced-react-patterns .modal-trigger:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+
+
+
+/*
+    Overlay
+*/
+
+#advanced-react-patterns-modal-root .modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+
+    z-index: 1;
+
+}
+
+
+
+
+
+/*
+    Modal Content
+*/
+
+#advanced-react-patterns-modal-root .modal-content {
+
+    width:
+        min(
+            90vw,
+            450px
+        );
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 25px 60px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    animation:
+        modal-show
+        0.2s ease;
+
+}
+
+
+
+
+
+#advanced-react-patterns-modal-root .modal-header {
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+}
+
+
+
+
+
+#advanced-react-patterns-modal-root .modal-body {
+
+    color: #4b5563;
+
+    line-height: 1.5;
+
+}
+
+
+
+
+
+#advanced-react-patterns-modal-root .modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 24px;
+
+}
+
+
+
+
+
+#advanced-react-patterns-modal-root .modal-close {
+
+    padding: 8px 16px;
+
+    border:
+        1px solid #d1d5db;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+#advanced-react-patterns-modal-root .modal-close:hover {
+
+    background: #f3f4f6;
+
+}
+
+
+
+
+
+@keyframes modal-show {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-15px)
+            scale(.96);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
