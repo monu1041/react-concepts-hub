@@ -1,1 +1,0 @@
-import{n as e,r as t}from"./rolldown-runtime-QTnfLwEv.js";import{o as n}from"./index-BABgoApO.js";var r=e({default:()=>a,useModalContext:()=>o}),i=t(n(),1),a=(0,i.createContext)(null);function o(){let e=(0,i.useContext)(a);if(!e)throw Error(`Modal components must be used inside <Modal>`);return e}export{r as n,o as r,a as t};

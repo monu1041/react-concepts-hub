@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-QTnfLwEv.js";import{r as t,t as n}from"./index-BABgoApO.js";var r=e({default:()=>o}),i=t(),a=n();function o(e){let t=(0,i.c)(2),{children:n}=e,r;return t[0]===n?r=t[1]:(r=(0,a.jsx)(`div`,{className:`modal-body`,children:n}),t[0]=n,t[1]=r),r}export{r as n,o as t};
