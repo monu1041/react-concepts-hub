@@ -6,24 +6,22 @@ This project focuses on building reusable, scalable, and accessible components u
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
-### 1. Tabs Component
+## 1. Tabs Component
 
-Pattern:
+### Patterns
 
 - Compound Components
 - Context API
 - Keyboard Navigation
 - Controlled & Uncontrolled State
 
-Example API:
+### Example API
 
 ```jsx
 <Tabs defaultValue="profile">
-
   <Tabs.List>
-
     <Tabs.Trigger value="profile">
       Profile
     </Tabs.Trigger>
@@ -31,152 +29,165 @@ Example API:
     <Tabs.Trigger value="settings">
       Settings
     </Tabs.Trigger>
-
   </Tabs.List>
-
 
   <Tabs.Content value="profile">
     Profile Content
   </Tabs.Content>
-
 </Tabs>
+```
 
-Features:
+### Features
 
-Shared state between tabs
-Keyboard navigation
-Accessible tab roles
-Reusable API design
-2. Headless Modal Component
+- Shared state between tabs
+- Keyboard navigation
+- Accessible tab roles
+- Reusable API design
 
-Pattern:
+---
 
-Headless Components
-Compound Components
-Controlled Components
-Uncontrolled Components
-React Portal
-Accessibility
+## 2. Headless Modal Component
 
-Example:
+### Patterns
 
+- Headless Components
+- Compound Components
+- Controlled Components
+- Uncontrolled Components
+- React Portal
+- Accessibility
+
+### Example
+
+```jsx
 <Modal>
-
   <Modal.Trigger>
     Open Modal
   </Modal.Trigger>
 
-
   <Modal.Content>
-
     <h2>
       Delete Account
     </h2>
-
   </Modal.Content>
-
 </Modal>
+```
 
-Features:
+### Features
 
-Logic separated from presentation
-Escape key handling
-Outside click detection
-Focus management
-Custom styling support
-3. Dropdown Component
+- Logic separated from presentation
+- Escape key handling
+- Outside click detection
+- Focus management
+- Custom styling support
 
-Pattern:
+---
 
-Compound Components
-Custom Hooks
-Context API
-Accessibility
-Keyboard Navigation
+## 3. Dropdown Component
 
-Example:
+### Patterns
 
+- Compound Components
+- Custom Hooks
+- Context API
+- Accessibility
+- Keyboard Navigation
+
+### Example
+
+```jsx
 <Dropdown>
-
   <Dropdown.Trigger>
     Actions
   </Dropdown.Trigger>
 
-
   <Dropdown.Content>
-
     <Dropdown.Item value="edit">
       Edit
     </Dropdown.Item>
 
-
     <Dropdown.Item value="delete">
       Delete
     </Dropdown.Item>
-
   </Dropdown.Content>
-
 </Dropdown>
+```
 
-Features:
+### Features
 
-Open/close state management
-Keyboard navigation
-Focus management
-Escape handling
-Menu accessibility roles
+- Open/close state management
+- Keyboard navigation
+- Focus management
+- Escape handling
+- Menu accessibility roles
 
-Supported keys:
+### Supported Keys
 
-Key	Action
-Arrow Down	Next item
-Arrow Up	Previous item
-Home	First item
-End	Last item
-Escape	Close menu
-4. Authentication Hook
+| Key | Action |
+|------|--------|
+| Arrow Down | Next item |
+| Arrow Up | Previous item |
+| Home | First item |
+| End | Last item |
+| Escape | Close menu |
 
-Pattern:
+---
 
-Context Provider Pattern
-Custom Hooks
-Protected Routes
+## 4. Authentication Hook
 
-Usage:
+### Patterns
 
+- Context Provider Pattern
+- Custom Hooks
+- Protected Routes
+
+### Usage
+
+```jsx
 const {
   user,
   login,
   logout
 } = useAuth();
+```
 
-Features:
+### Features
 
-Centralized authentication state
-Login/logout handling
-Loading state
-Protected route pattern
+- Centralized authentication state
+- Login/logout handling
+- Loading state
+- Protected route pattern
 
-Example:
+### Example
 
+```jsx
 <ProtectedRoute>
-
   <Dashboard />
-
 </ProtectedRoute>
-🧠 React Patterns Covered
-Pattern	Usage
-Composition	Building flexible components
-Compound Components	Tabs, Modal, Dropdown
-Context API	Shared component state
-Custom Hooks	Reusable logic
-Headless Components	Modal architecture
-Controlled Components	External state management
-Uncontrolled Components	Internal state management
-React Portal	Modal rendering
-Accessibility	Keyboard and ARIA support
-Provider Pattern	Authentication
-📂 Project Structure
+```
+
+---
+
+# 🧠 React Patterns Covered
+
+| Pattern | Usage |
+|----------|-------|
+| Composition | Building flexible components |
+| Compound Components | Tabs, Modal, Dropdown |
+| Context API | Shared component state |
+| Custom Hooks | Reusable logic |
+| Headless Components | Modal architecture |
+| Controlled Components | External state management |
+| Uncontrolled Components | Internal state management |
+| React Portal | Modal rendering |
+| Accessibility | Keyboard and ARIA support |
+| Provider Pattern | Authentication |
+
+---
+
+# 📂 Project Structure
+
+```text
 src
 │
 ├── components
@@ -211,113 +222,154 @@ src
 ├── App.jsx
 ├── App.css
 └── main.jsx
-🎯 Why These Patterns Matter
-Compound Components
+```
+
+---
+
+# 🎯 Why These Patterns Matter
+
+## Compound Components
 
 Instead of passing many props:
 
+```jsx
 <Component
   open={open}
   setOpen={setOpen}
   items={items}
 />
+```
 
-we create a declarative API:
+We create a declarative API:
 
+```jsx
 <Component>
-
   <Component.Trigger />
-
   <Component.Content />
-
 </Component>
+```
 
-Benefits:
+### Benefits
 
-Better readability
-Easier composition
-Cleaner APIs
-Headless Components
+- Better readability
+- Easier composition
+- Cleaner APIs
+
+---
+
+## Headless Components
 
 Headless components provide:
 
-Logic
-State management
-Accessibility
+- Logic
+- State management
+- Accessibility
 
-but no styling.
+but **no styling**.
 
 Example:
 
+```jsx
 const {
   open,
   toggle
 } = useDropdown();
+```
 
 The developer decides:
 
-UI
-CSS
-Design
+- UI
+- CSS
+- Design
 
-Benefits:
+### Benefits
 
-Highly reusable
-Design-system friendly
-Framework flexibility
-Custom Hooks
+- Highly reusable
+- Design-system friendly
+- Framework flexibility
+
+---
+
+## Custom Hooks
 
 Instead of:
 
+```jsx
 withAuth(Component)
+```
 
 Modern React uses:
 
+```jsx
 const user = useAuth();
+```
 
-Benefits:
+### Benefits
 
-No wrapper components
-Easier debugging
-Better composition
-Reusable business logic
-🎨 Styling Approach
+- No wrapper components
+- Easier debugging
+- Better composition
+- Reusable business logic
+
+---
+
+# 🎨 Styling Approach
 
 All components use scoped CSS:
 
+```css
 .advanced-react-patterns {
     ...
 }
+```
 
 This prevents component styles from leaking globally.
 
-🛠 Installation
+---
 
-Clone the project:
+# 🛠 Installation
 
+## Clone the project
+
+```bash
 git clone <repository-url>
+```
 
-Install dependencies:
+## Install dependencies
 
+```bash
 npm install
+```
 
-Run development server:
+## Run development server
 
+```bash
 npm run dev
-📚 Learning Goals
+```
+
+---
+
+# 📚 Learning Goals
 
 After completing this project you should understand:
 
-How React component libraries are designed
-How Radix UI and Headless UI approach component architecture
-How to separate logic from presentation
-How to build reusable APIs
-How to manage complex component state
-🔥 Inspired By
-Radix UI
-Headless UI
-React Aria
-Modern Design System Architecture
-Author
+- How React component libraries are designed
+- How Radix UI and Headless UI approach component architecture
+- How to separate logic from presentation
+- How to build reusable APIs
+- How to manage complex component state
+
+---
+
+# 🔥 Inspired By
+
+- Radix UI
+- Headless UI
+- React Aria
+- Modern Design System Architecture
+
+---
+
+# Author
 
 Built as a practical exploration of advanced React architecture patterns.
