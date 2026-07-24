@@ -2,195 +2,70 @@
     box-sizing: border-box;
 }
 
-
 /*
     Trigger Button
 */
 
 .advanced-react-patterns .dropdown-trigger {
-
-    padding:
-        10px 16px;
-
-
-    border:
-        1px solid #d1d5db;
-
-
-    border-radius:
-        8px;
-
-
-    background:
-        white;
-
-
-    cursor:
-        pointer;
-
-
-    font-size:
-        15px;
-
-
-    color:
-        #111827;
-
-
+    padding: 10px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background:white;
+    cursor: pointer;
+    font-size: 15px;
+    color:#111827;
 }
-
-
 
 .advanced-react-patterns .dropdown-trigger:hover {
-
-    background:
-        #f3f4f6;
-
+    background:#f3f4f6;
 }
-
-
 
 .advanced-react-patterns .dropdown-trigger:focus-visible {
-
-    outline:
-        3px solid #93c5fd;
-
-
-    outline-offset:
-        3px;
-
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
 }
-
-
-
 /*
     Dropdown Wrapper
 */
 
 .advanced-react-patterns .dropdown {
-
-    position:
-        relative;
-
-    display:
-        inline-block;
-
+    position:relative;
+    display:inline-block;
 }
-
-
 
 /*
     Dropdown Menu
 */
 
 .advanced-react-patterns .dropdown-content {
-
-
-    position:
-        absolute;
-
-
-    top:
-        calc(100% + 8px);
-
-
-    left:
-        0;
-
-
-
-    min-width:
-        180px;
-
-
-
-    padding:
-        6px;
-
-
-
-    background:
-        white;
-
-
-
-    border:
-        1px solid #e5e7eb;
-
-
-
-    border-radius:
-        10px;
-
-
-
-    box-shadow:
-
-        0 10px 25px
-        rgba(
-            0,
-            0,
-            0,
-            0.12
-        );
-
-
-
-    z-index:
-        1000;
-
-
+    position:  absolute;
+    top:  calc(100% + 8px);
+    left:  0;
+    min-width:  180px;
+    padding:  6px;
+    background: white;
+    border:  1px solid #e5e7eb;
+    border-radius:  10px;
+    box-shadow: 0 10px 25px  rgba(0, 0, 0, 0.12);
+    z-index: 1000;
 }
-
-
 
 /*
     Menu Item
 */
 
 .advanced-react-patterns .dropdown-item {
-
-
-    padding:
-        10px 12px;
-
-
-    border-radius:
-        6px;
-
-
-    cursor:
-        pointer;
-
-
-    color:
-        #111827;
-
-
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color:#111827;
 }
-
-
 
 .advanced-react-patterns .dropdown-item:hover {
-
-
-    background:
-        #f3f4f6;
-
-
+    background: #f3f4f6;
 }
 
-
-
 .advanced-react-patterns .dropdown-item:focus-visible {
-
-
-    outline:
-        none;
-
-
-    background:
-        #e0f2fe;
-
-
+    outline: none;
+    background:#e0f2fe;
 }

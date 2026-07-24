@@ -10,15 +10,13 @@ const TabsContext = createContext(null);
  * Throws an error if used outside <Tabs>.
  */
 export function useTabsContext() {
-    const context = useContext(TabsContext);
+  const context = useContext(TabsContext);
 
-    if (!context) {
-        throw new Error(
-            "Tabs components must be used inside <Tabs>."
-        );
-    }
+  if (!context) {
+    throw new Error("Tabs components must be used inside <Tabs>.");
+  }
 
-    return context;
+  return context;
 }
 
 export default TabsContext;
