@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-QTnfLwEv.js";import{o as t}from"./index-CxMEGU0-.js";var n=e(t(),1),r=(0,n.createContext)(null);function i(){let e=(0,n.useContext)(r);if(!e)throw Error(`Modal components must be used inside <Modal>`);return e}export{i as n,r as t};
