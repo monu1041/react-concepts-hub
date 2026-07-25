@@ -8,7 +8,6 @@ function AuthProvider({ children, }) {
 
     async function login(
         email,
-        password,
     ) {
         setLoading(true);
         await new Promise((resolve) =>
