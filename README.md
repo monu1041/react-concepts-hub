@@ -12,12 +12,6 @@ The app is live at: https://monu1041.github.io/react-concepts-hub/
 
 	[![View demo on GitHub Pages](https://img.shields.io/badge/View%20Demo-GitHub%20Pages-blue?logo=github)](https://monu1041.github.io/react-concepts-hub/)
 
-- Optional screenshot preview (add a screenshot to `public/preview.png` or tell me and I can add one):
-
-	[![Live preview screenshot](https://monu1041.github.io/react-concepts-hub/preview.png)](https://monu1041.github.io/react-concepts-hub/)
-
-If you want, I can capture a screenshot and commit it to `public/preview.png`, or add a GitHub Action to generate it automatically on deploy.
-
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
