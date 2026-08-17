@@ -1,8 +1,42 @@
 // src/components/Sidebar.jsx
-import React from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import { topics } from '../topics/topicsRegistry';
 
 export default function Sidebar({ activeTopicId, setActiveTopicId, isOpen }) {
+  const [isPending, startTransition] = useTransition();
+
+  // 1️⃣ Dynamically group all topics by their category
+  const groupedTopics = topics.reduce((acc, topic) => {
+    const category = topic.category || 'Uncategorized';
+    if (!acc[category]) acc[category] = [];
+    acc[category].push(topic);
+    return acc;
+  }, {});
+
+  // 2️⃣ Find the category of the currently active topic
+  const currentTopic = topics.find(t => t.id === activeTopicId);
+  const initialCategory = currentTopic ? currentTopic.category : Object.keys(groupedTopics)[0];
+
+  // 3️⃣ State to track which category accordion is currently open
+  const [expandedCategory, setExpandedCategory] = useState(initialCategory);
+
+  // Keep the accordion synced if the active topic changes programmatically
+  useEffect(() => {
+    if (currentTopic) {
+      setExpandedCategory(currentTopic.category);
+    }
+  }, [currentTopic]);
+
+  const handleTopicClick = (id) => {
+    startTransition(() => {
+      setActiveTopicId(id);
+    });
+  };
+
+  const toggleCategory = (category) => {
+    setExpandedCategory(prev => prev === category ? null : category);
+  };
+
   return (
     <aside 
       className={`app-sidebar ${isOpen ? 'open' : ''}`}
@@ -16,7 +50,8 @@ export default function Sidebar({ activeTopicId, setActiveTopicId, isOpen }) {
         display: 'flex',
         flexDirection: 'column',
         zIndex: 50,
-        transition: 'background-color 0.2s, color 0.2s'
+        transition: 'background-color 0.2s, color 0.2s',
+        opacity: isPending ? 0.7 : 1
       }}
     >
       {/* Sidebar Header Title Anchor */}
@@ -32,44 +67,89 @@ export default function Sidebar({ activeTopicId, setActiveTopicId, isOpen }) {
         📚 Dev Journal
       </h2>
       
-      {/* Scrollable Array Container List */}
-      <ul style={{ 
-        listStyle: 'none', 
-        padding: 0, 
-        margin: 0, 
-        overflowY: 'auto', 
-        flex: 1, 
-        paddingRight: '4px' 
-      }}>
-        {topics.map((topic) => {
-          const isActive = activeTopicId === topic.id;
+      {/* Scrollable Category Container */}
+      <div style={{ overflowY: 'auto', flex: 1, paddingRight: '4px' }}>
+        {Object.entries(groupedTopics).map(([category, categoryTopics]) => {
+          const isExpanded = expandedCategory === category;
+
           return (
-            <li 
-              key={topic.id} 
-              onClick={() => setActiveTopicId(topic.id)}
-              style={{
-                padding: '10px 15px',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                marginBottom: '8px',
-                background: isActive ? '#3b82f6' : 'transparent',
-                // Keeps active selection legible against bright highlight blocks
-                color: isActive ? '#ffffff' : 'var(--text-sidebar)', 
-                transition: 'background-color 0.2s, color 0.2s'
-              }}
-            >
-              <div style={{ fontWeight: '500' }}>{topic.title}</div>
-              <small style={{ 
-                opacity: 0.6, 
-                fontSize: '11px',
-                color: isActive ? '#ffffff' : 'var(--text-secondary)'
-              }}>
-                {topic.category}
-              </small>
-            </li>
+            <div key={category} style={{ marginBottom: '12px' }}>
+              
+              {/* 📂 Category Header / Accordion Toggle */}
+              <button 
+                onClick={() => toggleCategory(category)}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  background: 'transparent',
+                  border: 'none',
+                  /* 💡 FIX 1: Bolder, larger, and brighter category text */
+                  color: 'var(--text-sidebar)',
+                  fontWeight: 'bold', 
+                  fontSize: '13px', 
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  padding: '8px 4px',
+                  cursor: 'pointer',
+                  textAlign: 'left'
+                }}
+              >
+                <span>{category} ({categoryTopics.length})</span>
+                {/* ⬇️ Animated Arrow */}
+                <svg 
+                  /* 💡 FIX 2: 1.5x bigger dimensions (18px) and thicker stroke (3px) */
+                  width="18" 
+                  height="18" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="3" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  style={{
+                    transition: 'transform 0.3s ease',
+                    transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              {/* 📝 The Nested Topics List (Only renders if expanded) */}
+              {isExpanded && (
+                <ul style={{ listStyle: 'none', padding: 0, margin: '4px 0 0 0' }}>
+                  {categoryTopics.map((topic) => {
+                    const isActive = activeTopicId === topic.id;
+                    return (
+                      <li 
+                        key={topic.id} 
+                        onClick={() => handleTopicClick(topic.id)}
+                        style={{
+                          padding: '10px 15px 10px 12px',
+                          borderRadius: '6px',
+                          cursor: 'pointer',
+                          marginBottom: '4px',
+                          background: isActive ? 'var(--accent)' : 'transparent',
+                          color: isActive ? '#ffffff' : 'var(--text-sidebar)', 
+                          transition: 'background-color 0.2s, color 0.2s',
+                          fontSize: '14px',
+                          borderLeft: '3px solid transparent',
+                        }}
+                      >
+                        <div style={{ fontWeight: isActive ? '600' : '400' }}>
+                          {topic.title}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           );
         })}
-      </ul>
+      </div>
 
       {/* Sliding Mobile Breakpoint Drawer Logic Override */}
       <style>{`
