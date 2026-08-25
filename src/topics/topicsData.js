@@ -57,6 +57,13 @@ export const topicsData = [
     category: 'React Architecture',
     description: 'A collection of advanced React patterns including Compound Components, Headless Components, Custom Hooks, Context API, Controlled and Uncontrolled Components, Dropdowns, Modals, Tabs, and Authentication Hooks.',
     entryFile: 'App.jsx'
+  },
+  {
+    id: 'todo-app',
+    title: 'Todo App',
+    category: 'Machine Coding Interview',
+    description: 'Machine coding interview question: Implement a Todo App with features like adding, deleting, toggling todos, filtering by status, and searching by text.',
+    entryFile: 'App.jsx'
   }
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.
 ];

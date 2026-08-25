@@ -1,0 +1,147 @@
+.todo-app,
+.todo-app *,
+.todo-app *::before,
+.todo-app *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.todo-app {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  color: #222;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Heading */
+
+.todo-app h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Common */
+
+.todo-app button,
+.todo-app input {
+  font: inherit;
+}
+
+.todo-app button {
+  cursor: pointer;
+}
+
+/* Todo Input */
+
+.todo-app .todo-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-app .todo-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-app .todo-input button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+/* Search */
+
+.todo-app .todo-search {
+  margin-bottom: 12px;
+}
+
+.todo-app .todo-search input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Filter */
+
+.todo-app .todo-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-app .todo-filter button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.todo-app .todo-filter button.active {
+  background: #222;
+  color: #fff;
+}
+
+/* Todo List */
+
+.todo-app .todo-list {
+  list-style: none;
+  border-top: 1px solid #eee;
+}
+
+/* Todo Item */
+
+.todo-app .todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-app .todo-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-app .todo-item.completed span {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.todo-app .todo-item button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+/* Empty State */
+
+.todo-app .empty-message {
+  padding: 20px 0;
+  color: #777;
+  text-align: center;
+}
+
+/* Footer */
+
+.todo-app .todo-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  color: #666;
+  font-size: 14px;
+}
