@@ -64,6 +64,13 @@ export const topicsData = [
     category: 'Machine Coding Interview',
     description: 'Machine coding interview question: Implement a Todo App with features like adding, deleting, toggling todos, filtering by status, and searching by text.',
     entryFile: 'App.jsx'
+  },
+  {
+    id: 'react-ui-patterns-demo',
+    title: 'React UI Patterns Demo',
+    category: 'UI Patterns',
+    description: 'A demo showcasing various React UI patterns.',
+    entryFile: 'App.jsx'
   }
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.
 ];

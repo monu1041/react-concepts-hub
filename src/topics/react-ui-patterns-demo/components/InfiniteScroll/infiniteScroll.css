@@ -1,0 +1,44 @@
+.infinite-scroll {
+  width: 100%;
+}
+
+.infinite-scroll__list {
+  height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.infinite-scroll__item {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.infinite-scroll__item:last-child {
+  border-bottom: none;
+}
+
+.infinite-scroll__item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.infinite-scroll__item p {
+  margin: 0;
+  color: #666;
+}
+
+.infinite-scroll__status {
+  text-align: center;
+  padding: 12px;
+}
+
+.infinite-scroll__error {
+  padding: 12px;
+  text-align: center;
+}
+
+.infinite-scroll__sentinel {
+  height: 1px;
+}

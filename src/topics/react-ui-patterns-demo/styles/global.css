@@ -1,0 +1,225 @@
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #1f2937;
+  background: #f5f7fb;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #eef2f7;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.hero {
+  padding: 64px 24px;
+  background: #111827;
+  color: white;
+}
+
+.hero-content {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #93c5fd;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.05;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0;
+  color: #d1d5db;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.container {
+  width: min(1100px, calc(100% - 32px));
+  margin: 40px auto 80px;
+}
+
+.demo-section {
+  margin-bottom: 48px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+  font-size: 30px;
+}
+
+.section-heading p {
+  max-width: 500px;
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.section-label {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  padding: 24px;
+  margin-bottom: 16px;
+
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(15 23 42 / 4%);
+}
+
+.demo-card h3 {
+  margin: 0 0 8px;
+}
+
+.demo-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.button-success {
+  background: #16a34a;
+  color: white;
+}
+
+.button-error {
+  background: #dc2626;
+  color: white;
+}
+
+.button-warning {
+  background: #d97706;
+  color: white;
+}
+
+.button-info {
+  background: #0891b2;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 48px 20px;
+  }
+
+  .container {
+    width: min(100% - 24px, 1100px);
+    margin-top: 24px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .section-heading p {
+    text-align: left;
+  }
+
+  .demo-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
