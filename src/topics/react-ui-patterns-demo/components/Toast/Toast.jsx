@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 
 const ICONS = {
@@ -15,7 +16,9 @@ export default function Toast({
     id,
     type,
     message,
-    duration
+    duration,
+    count,
+    timerVersion
   } = toast;
 
   useEffect(() => {
@@ -30,7 +33,12 @@ export default function Toast({
     return () => {
       window.clearTimeout(timerId);
     };
-  }, [id, duration, onRemove]);
+  }, [
+    id,
+    duration,
+    timerVersion,
+    onRemove
+  ]);
 
   return (
     <div
@@ -41,15 +49,24 @@ export default function Toast({
           : "status"
       }
     >
-      <div className={`toast-icon toast-icon-${type}`}>
+      <div
+        className={`toast-icon toast-icon-${type}`}
+      >
         {ICONS[type]}
       </div>
 
       <div className="toast-message">
         {message}
+
+        {count > 1 && (
+          <span className="toast-count">
+            ×{count}
+          </span>
+        )}
       </div>
 
       <button
+        type="button"
         className="toast-close"
         onClick={() => onRemove(id)}
         aria-label="Dismiss notification"
