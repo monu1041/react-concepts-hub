@@ -1,1 +1,0 @@
-import{r as e}from"./rolldown-runtime-QTnfLwEv.js";import{i as t,o as n,t as r}from"./index-I3HDcdOg.js";import{t as i}from"./react-redux-Bn4aKAp_.js";import a,{t as o}from"./App-AGnhYxV1.js";n();var s=e(t(),1),c=r();s.createRoot(document.getElementById(`root`)).render((0,c.jsx)(i,{store:o,children:(0,c.jsx)(a,{})}));
