@@ -71,6 +71,13 @@ export const topicsData = [
     category: 'UI Patterns',
     description: 'A demo showcasing various React UI patterns.',
     entryFile: 'App.jsx'
+  },
+  {
+    id: 'react-server-client',
+    title: 'React Server Components Demo',
+    category: 'Server Components',
+    description: 'Illustrates the React Server Components rule where a Server Component safely passes server-rendered content into a Client Component using the children prop pattern.',
+    entryFile: 'App.jsx'
   }
   // 🚀 Just drop new arrays here! Clean, readable, and lightning fast.
 ];
